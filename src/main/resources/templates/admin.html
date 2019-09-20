@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="adminhead">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link th:fragment="bootstrapcss" rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.css}">
+    <script th:fragment="jquery" th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+    <script th:fragment="bootstrapjs" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.js}"></script>
+    <script th:fragment="adminjs" th:src="@{/js/admin.js}"></script>
+    <link th:fragment="admincss" rel="stylesheet" th:href="@{/css/admin.css}">
+    <title>后台主页</title>
+</head>
+
+<body>
+<div class="container-fluid">
+    <!--导航栏开始-->
+    <div class="row navbar-fixed-top" th:fragment="nav">
+        <div class="col-xs-12" style="background-color:black;height: 60px; color: white;">
+            <div class="login_information">
+                <h3>欢迎 <span>XXX</span> <span>XXX:XXX:XXX</span></h3>
+            </div>
+        </div>
+    </div>
+    <!--导航栏结束-->
+    <div class="row down">
+        <!--侧边栏开始-->
+        <div class="col-xs-2 list_dl" th:fragment="sider">
+            <dl class="list_dl">
+                <dt class="list_dt">
+                    <span class="_after"></span>
+                    <p>主页</p>
+                    <i class="list_dt_icon"></i>
+                </dt>
+                <dt class="list_dt">
+                    <span class="_after"></span>
+                    <p>教师管理</p>
+                    <i class="list_dt_icon"></i>
+                </dt>
+                <dd class="list_dd">
+                    <ul>
+                        <li class="list_li" th:href="@{/admin/teacherAdmin/1}">查看教师</li>
+                        <li class="list_li">removeAttr</li>
+                        <li class="list_li">prop</li>
+                        <li class="list_li">removeProp</li>
+                        <li class="list_li">addClass</li>
+                        <li class="list_li">removeClass</li>
+                    </ul>
+                </dd>
+                <dt class="list_dt">
+                    <span class="_after"></span>
+                    <p>学生管理</p>
+                    <i class="list_dt_icon"></i>
+                </dt>
+                <dd class="list_dd">
+                    <ul>
+                        <li class="list_li">append</li>
+                        <li class="list_li">appendTo</li>
+                        <li class="list_li">prepend</li>
+                        <li class="list_li">prependTo</li>
+                        <li class="list_li">after</li>
+                        <li class="list_li">before</li>
+                    </ul>
+                </dd>
+                <dt class="list_dt">
+                    <span class="_after"></span>
+                    <p>课程管理</p>
+                    <i class="list_dt_icon"></i>
+                </dt>
+                <dd class="list_dd">
+                    <ul>
+                        <li class="list_li">ready</li>
+                        <li class="list_li">on</li>
+                        <li class="list_li">off</li>
+                        <li class="list_li">bind</li>
+                        <li class="list_li">one</li>
+                        <li class="list_li">trigger</li>
+                        <li class="list_li">hover</li>
+                        <li class="list_li">click</li>
+                        <li class="list_li">focus</li>
+                    </ul>
+                </dd>
+                <dt class="list_dt">
+                    <span class="_after"></span>
+                    <p>班级管理</p>
+                    <i class="list_dt_icon"></i>
+                </dt>
+                <dd class="list_dd">
+                    <ul>
+                        <li class="list_li">查看班级信息</li>
+                        <li class="list_li">$.get</li>
+                        <li class="list_li">$.getJSON</li>
+                        <li class="list_li">$.getScript</li>
+                        <li class="list_li">$.post</li>
+                    </ul>
+                </dd>
+                <dt class="list_dt">
+                    <span class="_after"></span>
+                    <p>测评管理</p>
+                    <i class="list_dt_icon"></i>
+                </dt>
+                <dd class="list_dd">
+                    <ul>
+                        <li class="list_li">show</li>
+                        <li class="list_li">hide</li>
+                        <li class="list_li">toggle</li>
+                        <li class="list_li">slideDown</li>
+                        <li class="list_li">slideUp</li>
+                        <li class="list_li">slideToggle</li>
+                        <li class="list_li">fadeIn</li>
+                        <li class="list_li">fadeOut</li>
+                        <li class="list_li">fadeTo</li>
+                        <li class="list_li">fadeToggle</li>
+                        <li class="list_li">stop</li>
+                    </ul>
+                </dd>
+            </dl>
+        </div>
+        <!--侧边栏结束-->
+
+    </div>
+</div>
+</body>
+</html>

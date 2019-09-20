@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin::adminhead">
+    <title>登录页面</title>
+</head>
+<script th:src="@{/js/teacherAdmin.js/}"></script>
+<body>
+<!--新增教师模态框-->
+<div class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!--标题-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">添加教师信息</h4>
+            </div>
+            <!--表单部分-->
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label>工号</label>
+                        <input type="text" name="name" class="form-control" placeholder="工号">
+                    </div>
+                    <div class="form-group">
+                        <label>姓名</label>
+                        <input type="text" class="form-control" name="place" placeholder="姓名">
+                    </div>
+                    <div class="form-group">
+                        <label>性别</label>
+                        <select>
+                            <option>男</option>
+                            <option>女</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>手机号</label>
+                        <input th:id="time" type="text" name="tm" class="form-control" placeholder="手机号码">
+                    </div>
+                    <div class="form-group">
+                        <label>生日</label>
+                        <textarea name="des" rows="3" class="form-control" placeholder="..."></textarea>
+                    </div>
+
+                    <!--底部-->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button th:id="save" type="button" class="btn btn-primary">保存</button>
+                    </div>
+                </form>
+                <!--表单结束-->
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!--模态框结束-->
+<!--网页整体开始-->
+<div class="container-fluid">
+    <!--nav-->
+    <div th:replace="admin::nav"></div>
+    <!--sider-->
+    <div class="row down">
+        <div th:replace="admin::sider"></div>
+        <div class="container col-xs-offset-2">
+            <div class="col-xs-offset-10" style="margin-top: 20px">
+                <button class="btn-primary" th:id="btn_add">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    添加老师
+                </button>
+                <button class="btn-danger" th:id="btn_del_all">
+                    <span class="glyphicon glyphicon-minus"></span>
+                    批量删除
+                </button>
+            </div>
+            <table class="table table-hover table-bordered">
+                <caption>教师信息表</caption>
+                <thead>
+                <tr class="success">
+                    <td>
+                        <button class="btn-xs btn-danger" th:id="check_all">全选</button>
+                    </td>
+                    <th>序号</th>
+                    <th>工号</th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>手机号码</th>
+                    <th>生日</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:id="tr_list" th:each="item: ${list}">
+                    <td><input th:class="check_item" type="checkbox"/></td>
+                    <td th:text="${item.getTeacherId()}"></td>
+                    <td th:text="${item.getTeacherNo()}"></td>
+                    <td th:text="${item.getTeacherName()}"></td>
+                    <td th:text="${item.getTeacherSex()}"></td>
+                    <td th:text="${item.getTeacherTel()}"></td>
+                    <td th:text="${item.getTeacherBirth()}"></td>
+                    <td>
+                        <button type="button" class="btn-info btn_e">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            编辑
+                        </button>
+                        <button type="button" class="btn-danger btn_d">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            删除
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <!--分页信息显示-->
+            <div th:id="pageInfo">
+                <p>当前<span class="text-danger" th:alt="${pageInfo.pageNum}"
+                           th:text="'【'+${pageInfo.pageNum}+'】'"></span>页，共<span
+                        class="text-danger" th:text="'【'+${pageInfo.pages}+'】'"></span>页，总<span class="text-danger"
+                                                                                                th:text="'【'+${pageInfo.total}+'】'"></span>记录
+                </p>
+            </div>
+            <!--分页条显示-->
+            <div class="col-xs-offset-7">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li
+                                th:class="${pageInfo.pageNum==1?'disabled':''}"><a th:href="@{/admin/teacherAdmin/1}">首页
+                        </a></li>
+                        <li th:class="${pageInfo.pageNum==1?'disabled':''}">
+                            <a th:href="@{${(pageInfo.pageNum)-1}}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li th:each="item:${pageInfo.navigatepageNums}"
+                            th:class="${pageInfo.pageNum==item?'active':''}">
+                            <a th:href="@{${item}}" th:text="${item}"></a>
+                        </li>
+                        <li th:class="${pageInfo.pageNum==pageInfo.pages?'disabled':''}">
+                            <a th:href="@{${(pageInfo.pageNum)+1}}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        <li th:class="${pageInfo.pageNum==pageInfo.pages?'disabled':''}"><a
+                                th:href="@{${pageInfo.total}}">尾页</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!--主体模块布局-->
+</div>
+</body>
+</html>

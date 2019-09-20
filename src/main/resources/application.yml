@@ -1,0 +1,23 @@
+# 配置数据库相关信息
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tecs?characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: root
+
+  # 禁用 thymeleaf 缓存
+  thymeleaf:
+    cache: false
+
+# 开启日志
+logging:
+  level:
+    com.example.mapper: debug
+
+#配置 pagehelper 插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

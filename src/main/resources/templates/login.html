@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+    <script th:src="@{/js/login.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+<body>
+<div id="wrapper" class="login-page">
+    <div class="form" >
+        <form class="login-form" id="login_form">
+            <input name="no" type="text" placeholder="用户名" id="user_name"/>
+            <input name="pass" type="password" placeholder="密码" id="password"/>
+            <select>
+                <option th:value="${item.getRoleId()}" th:each="item: ${list}" th:text="${item.getRoleName()}"></option>
+            </select>
+            <button id="login">登录</button>
+            <p class="message">忘记密码? <a href="#">立刻找回</a></p>
+        </form>
+    </div>
+</div>
+</body>
+</html>
