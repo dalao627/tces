@@ -78,6 +78,20 @@ public class ViewController {
     }
 
     /**
+     * 学生管理
+     *
+     *
+     * */
+    @GetMapping("/admin/studentAdmin/{pn}")
+    public ModelAndView studentAdmin(@PathVariable("pn") Integer pn){
+        List<Student> list = new ArrayList<>();
+        return  pageSelect(pn,studentService,list,"studentAdmin");
+    }
+
+
+
+
+    /**
      * 封装分页查询方法
      *
      * @param pn 查询页码

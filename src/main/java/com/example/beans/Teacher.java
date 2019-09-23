@@ -85,4 +85,75 @@ public class Teacher extends Model<Teacher> {
         return this.teacherId;
     }
 
+    public Integer getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(Integer teacherId) {
+        this.teacherId = teacherId;
+    }
+
+    public Integer getTeacherNo() {
+        return teacherNo;
+    }
+
+    public void setTeacherNo(Integer teacherNo) {
+        this.teacherNo = teacherNo;
+    }
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
+    }
+
+    public String getTeacherPassword() {
+        return teacherPassword;
+    }
+
+    public void setTeacherPassword(String teacherPassword) {
+        this.teacherPassword = teacherPassword;
+    }
+
+    public String getTeacherSex() {
+        return teacherSex;
+    }
+
+    public void setTeacherSex(String teacherSex) {
+        this.teacherSex = teacherSex;
+    }
+
+    public Integer getTeacherStatus() {
+        return teacherStatus;
+    }
+
+    public void setTeacherStatus(Integer teacherStatus) {
+        this.teacherStatus = teacherStatus;
+    }
+
+    public Integer getTeacherRoleId() {
+        return teacherRoleId;
+    }
+
+    public void setTeacherRoleId(Integer teacherRoleId) {
+        this.teacherRoleId = teacherRoleId;
+    }
+
+    public String getTeacherTel() {
+        return teacherTel;
+    }
+
+    public void setTeacherTel(String teacherTel) {
+        this.teacherTel = teacherTel;
+    }
+
+    public LocalDate getTeacherBirth() {
+        return teacherBirth;
+    }
+
+    public void setTeacherBirth(LocalDate teacherBirth) {
+        this.teacherBirth = teacherBirth;
+    }
 }

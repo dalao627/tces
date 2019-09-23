@@ -66,4 +66,67 @@ public class Student extends Model<Student> {
         return this.studentId;
     }
 
+    public Integer getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
+    }
+
+    public Integer getStudentNo() {
+        return studentNo;
+    }
+
+    public void setStudentNo(Integer studentNo) {
+        this.studentNo = studentNo;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public String getStudentPassword() {
+        return studentPassword;
+    }
+
+    public void setStudentPassword(String studentPassword) {
+        this.studentPassword = studentPassword;
+    }
+
+    public String getStudentSex() {
+        return studentSex;
+    }
+
+    public void setStudentSex(String studentSex) {
+        this.studentSex = studentSex;
+    }
+
+    public Integer getStudentGradeId() {
+        return studentGradeId;
+    }
+
+    public void setStudentGradeId(Integer studentGradeId) {
+        this.studentGradeId = studentGradeId;
+    }
+
+    public Integer getStudentStatus() {
+        return studentStatus;
+    }
+
+    public void setStudentStatus(Integer studentStatus) {
+        this.studentStatus = studentStatus;
+    }
+
+    public Integer getStudentRoleId() {
+        return studentRoleId;
+    }
+
+    public void setStudentRoleId(Integer studentRoleId) {
+        this.studentRoleId = studentRoleId;
+    }
 }
