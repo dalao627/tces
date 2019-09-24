@@ -3,10 +3,7 @@ package com.example.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.beans.*;
-import com.example.service.AdminService;
-import com.example.service.RoleService;
-import com.example.service.StudentService;
-import com.example.service.TeacherService;
+import com.example.service.*;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +35,10 @@ public class ViewController {
 
     @Autowired
     private TeacherService teacherService;
+
+    @Autowired
+    private CourseService courseService;
+
 
     /**
      * 登录界面
@@ -88,8 +89,15 @@ public class ViewController {
         return  pageSelect(pn,studentService,list,"studentAdmin");
     }
 
-
-
+    /**
+     * 课程主页
+     *
+     * */
+    @GetMapping("/admin/courseAdmin/{pn}")
+    public ModelAndView courseAdmin(@PathVariable("pn") Integer pn){
+        List<Student> list = new ArrayList<>();
+        return  pageSelect(pn,courseService,list,"courseAdmin");
+    }
 
     /**
      * 封装分页查询方法

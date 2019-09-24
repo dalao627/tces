@@ -54,4 +54,39 @@ public class Course extends Model<Course> {
         return this.courseId;
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Integer getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public Integer getCourseHour() {
+        return courseHour;
+    }
+
+    public void setCourseHour(Integer courseHour) {
+        this.courseHour = courseHour;
+    }
+
+    public Integer getCourseCredit() {
+        return courseCredit;
+    }
+
+    public void setCourseCredit(Integer courseCredit) {
+        this.courseCredit = courseCredit;
+    }
 }
