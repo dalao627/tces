@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="admin::adminhead">
-    <title>登录页面</title>
+    <meta charset="UTF-8">
+    <title>课程信息</title>
 </head>
-<script th:src="@{/js/teacherAdmin.js/}"></script>
+<script th:src="@{/js/courseAdmin.js/}"></script>
 <body>
-<!--新增教师模态框-->
+<!--新增课程模态框-->
 <div class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -13,35 +14,23 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title">添加教师信息</h4>
+                <h4 class="modal-title">添加课程信息</h4>
             </div>
             <!--表单部分-->
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label>工号</label>
-                        <input type="text" name="name" class="form-control" placeholder="工号">
+                        <label>课程名</label>
+                        <input type="text" name="name" class="form-control" placeholder="课程名">
                     </div>
                     <div class="form-group">
-                        <label>姓名</label>
-                        <input type="text" class="form-control" name="place" placeholder="姓名">
+                        <label>学时</label>
+                        <input type="text" class="form-control" name="course_hour" placeholder="学时">
                     </div>
                     <div class="form-group">
-                        <label>性别</label>
-                        <select>
-                            <option>男</option>
-                            <option>女</option>
-                        </select>
+                        <label>学分</label>
+                        <input type="text" class="form-control" name="course_credit" placeholder="学分">
                     </div>
-                    <div class="form-group">
-                        <label>手机号</label>
-                        <input th:id="time" type="text" name="tm" class="form-control" placeholder="手机号码">
-                    </div>
-                    <div class="form-group">
-                        <label>生日</label>
-                        <textarea name="des" rows="3" class="form-control" placeholder="..."></textarea>
-                    </div>
-
                     <!--底部-->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -65,7 +54,7 @@
             <div class="col-xs-offset-10" style="margin-top: 20px">
                 <button class="btn-primary" th:id="btn_add">
                     <span class="glyphicon glyphicon-plus"></span>
-                    添加老师
+                    添加课程
                 </button>
                 <button class="btn-danger" th:id="btn_del_all">
                     <span class="glyphicon glyphicon-minus"></span>
@@ -73,30 +62,26 @@
                 </button>
             </div>
             <table class="table table-hover table-bordered">
-                <caption>教师信息表</caption>
+                <caption>课程信息表</caption>
                 <thead>
                 <tr class="success">
                     <td>
                         <button class="btn-xs btn-danger" th:id="check_all">全选</button>
                     </td>
                     <th>序号</th>
-                    <th>工号</th>
-                    <th>姓名</th>
-                    <th>性别</th>
-                    <th>手机号码</th>
-                    <th>生日</th>
+                    <th>课程名</th>
+                    <th>学时</th>
+                    <th>学分</th>
                     <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:id="tr_list" th:each="item: ${list}">
                     <td><input th:class="check_item" type="checkbox"/></td>
-                    <td th:text="${item.getTeacherId()}"></td>
-                    <td th:text="${item.getTeacherNo()}"></td>
-                    <td th:text="${item.getTeacherName()}"></td>
-                    <td th:text="${item.getTeacherSex()}"></td>
-                    <td th:text="${item.getTeacherTel()}"></td>
-                    <td th:text="${item.getTeacherBirth()}"></td>
+                    <td th:text="${item.getCourseId()}"></td>
+                    <td th:text="${item.getCourseName()}"></td>
+                    <td th:text="${item.getCourseHour()}"></td>
+                    <td th:text="${item.getCourseCredit()}"></td>
                     <td>
                         <button type="button" class="btn-info btn_e">
                             <span class="glyphicon glyphicon-pencil"></span>
@@ -146,8 +131,7 @@
             </div>
         </div>
     </div>
-
-    <!--主体模块布局-->
 </div>
+    <!--主体模块布局-->
 </body>
 </html>

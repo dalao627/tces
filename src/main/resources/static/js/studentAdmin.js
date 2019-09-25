@@ -27,7 +27,7 @@ function checked() {
 //去当前页
 function to_page() {
     var no = $("#pageInfo span:eq(0)").attr("alt");
-    location.href = "/admin/teacherAdmin/" + no;
+    location.href = "/admin/studentAdmin/" + no;
 }
 
 //删除多个用户信息
@@ -47,7 +47,7 @@ function del_List() {
             alert("请选择需要删除的比赛");
         } else if (confirm("你确定要删除【" + names + "】等用户吗？")) {
             $.ajax({
-                url: "/teacher/" + ids,
+                url: "/student/" + ids,
                 type: "DELETE",
                 success: function (data) {
                     to_page();
@@ -68,7 +68,7 @@ function delOne() {
             $(this).parents("tr").find("td:eq(0) input").attr("checked", true);
             //发送删除请求
             $.ajax({
-                url: "/teacher/" + id,
+                url: "/student/" + id,
                 type: "DELETE",
                 success: function (data) {
                     //跳转到当前页
@@ -81,7 +81,8 @@ function delOne() {
     });
 }
 
-//点击新增比赛按钮 打开新增表单模态框
+
+//点击新增学生按钮，打开新增表单模态框
 function openModal() {
     $("#btn_add").click(function () {
         // alert("新增模态框");
