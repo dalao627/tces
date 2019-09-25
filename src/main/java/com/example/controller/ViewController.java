@@ -3,10 +3,8 @@ package com.example.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.beans.*;
-import com.example.service.AdminService;
-import com.example.service.RoleService;
-import com.example.service.StudentService;
-import com.example.service.TeacherService;
+import com.example.service.*;
+import com.example.util.Utils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +26,7 @@ import java.util.List;
 public class ViewController {
 
     @Autowired
-    private RoleService roleService;
+   private RoleService roleService;
 
     @Autowired
     private AdminService adminService;
@@ -38,6 +36,18 @@ public class ViewController {
 
     @Autowired
     private TeacherService teacherService;
+    @Autowired
+    private  CourseService courseService;
+
+    /**
+     * 管理员主界面
+     *
+     * @return 页面
+     */
+    @GetMapping("/admin")
+    public String index() {
+        return "admin";
+    }
 
     /**
      * 登录界面
@@ -53,49 +63,6 @@ public class ViewController {
         return mv;
     }
 
-    /**
-     * 管理员主界面
-     *
-     * @return 页面
-     */
-    @GetMapping("/admin")
-    public String index() {
-        return "admin";
-    }
-
-    @GetMapping("/admin/teacherAdmin/{pn}")
-    public ModelAndView teacherAdmin(@PathVariable("pn") Integer pn) {
-       /* PageHelper.startPage(pn, 8);
-        ModelAndView mv = new ModelAndView();
-        List<Teacher> list = teacherService.list();
-        PageInfo pageInfo = new PageInfo(list, 5);
-        mv.addObject("pageInfo", pageInfo);
-        mv.addObject("list", list);
-        mv.setViewName("teacherAdmin");
-        return mv;*/
-       List<Teacher> list = new ArrayList<>();
-        return pageSelect(pn, teacherService, list, "teacherAdmin");
-    }
-
-    /**
-     * 封装分页查询方法
-     *
-     * @param pn 查询页码
-     * @param service 要使用的 service
-     * @param list 用来保存查询到的信息
-     * @param viewName 返回的视图
-     * @return ModelAndView 页面 + 前台需要的数据
-     */
-    public ModelAndView pageSelect(Integer pn, IService service, List list, String viewName) {
-        ModelAndView mv = new ModelAndView();
-        PageHelper.startPage(pn, 8);
-        list = service.list();
-        PageInfo pageInfo = new PageInfo(list, 5);
-        mv.addObject("pageInfo", pageInfo);
-        mv.addObject("list", list);
-        mv.setViewName(viewName);
-        return mv;
-    }
 
 
     @PostMapping("/login/{roleId}")

@@ -5,8 +5,8 @@ $(function () {
     del_List();
     // 删除单个用户信息
     delOne();
-    // 打开模态框
-    openModal();
+    // 打开新增模态框
+    openModal_1();
 });
 
 // 实现全选|全不选功能
@@ -27,7 +27,8 @@ function checked() {
 //去当前页
 function to_page() {
     var no = $("#pageInfo span:eq(0)").attr("alt");
-    location.href = "/admin/teacherAdmin/" + no;
+    var delurl=window.location.pathname;
+    location.href = delurl;
 }
 
 //删除多个用户信息
@@ -42,12 +43,16 @@ function del_List() {
         });
         ids = ids.substring(0, ids.length - 1);
         names = names.substring(0, names.length - 1);
+        //获取当前页面路径
+        var delurl=window.location.pathname;
+        //去掉路径id
+        delurl=delurl.substring(0,delurl.length-1);
         //发送删除所选中比赛请求
         if (ids.length == 0) {
             alert("请选择需要删除的比赛");
         } else if (confirm("你确定要删除【" + names + "】等用户吗？")) {
             $.ajax({
-                url: "/teacher/" + ids,
+                url: delurl + ids,
                 type: "DELETE",
                 success: function (data) {
                     to_page();
@@ -63,12 +68,17 @@ function delOne() {
     $(".btn_d").click(function () {
         // alert("删除");
         var id = $(this).parents("tr").find("td:eq(1)").text();
+        //获取当前页面路径
+        var delurl=window.location.pathname;
+        //去掉路径id
+        delurl=delurl.substring(0,delurl.length-1);
         if (confirm("你确定要删除编号为【" + id + "】的用户吗？")) {
             //选择要删除的比赛
             $(this).parents("tr").find("td:eq(0) input").attr("checked", true);
             //发送删除请求
             $.ajax({
-                url: "/teacher/" + id,
+                //url: "/admin/teacher/" + id,
+                url:delurl+id,
                 type: "DELETE",
                 success: function (data) {
                     //跳转到当前页
@@ -82,10 +92,10 @@ function delOne() {
 }
 
 //点击新增比赛按钮 打开新增表单模态框
-function openModal() {
+function openModal_1() {
     $("#btn_add").click(function () {
         // alert("新增模态框");
-        $(".modal").modal({
+        $(".modal_1").modal({
             backdrop: false
         });
     });
